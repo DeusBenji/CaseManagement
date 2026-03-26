@@ -9,12 +9,23 @@
   <ItemGroup>
     <Folder Include="Logging\" />
     <Folder Include="Caching\" />
-    <Folder Include="DependencyInjection\" />
     <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Peristence\Configuration\" />
     <Folder Include="Peristence\Migration\" />
     <Folder Include="Peristence\Seed\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaseManagement.Application\CaseManagement.Application.csproj" />
+    <ProjectReference Include="..\CaseManagement.Domain\CaseManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>

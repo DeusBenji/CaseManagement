@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Abstraction\Messaging\" />
-    <Folder Include="Abstraction\" />
     <Folder Include="Abstraction\Services\" />
-    <Folder Include="Abstraction\Persistence\" />
     <Folder Include="Cases\Commands\CreateCase\" />
     <Folder Include="Cases\Commands\AssignCase\" />
     <Folder Include="Cases\Commands\UpdateCaseStatus\" />
@@ -22,6 +20,10 @@
     <Folder Include="Users\Commands\" />
     <Folder Include="Users\Dtos\" />
     <Folder Include="Users\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaseManagement.Domain\CaseManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>
