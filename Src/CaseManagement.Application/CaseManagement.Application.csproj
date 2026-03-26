@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstraction\Messaging\" />
+    <Folder Include="Abstraction\" />
+    <Folder Include="Abstraction\Services\" />
+    <Folder Include="Abstraction\Persistence\" />
+    <Folder Include="Cases\Commands\CreateCase\" />
+    <Folder Include="Cases\Commands\AssignCase\" />
+    <Folder Include="Cases\Commands\UpdateCaseStatus\" />
+    <Folder Include="Cases\Dtos\" />
+    <Folder Include="Cases\Queries\GetCaseById\" />
+    <Folder Include="Cases\Queries\GetAllCases\" />
+    <Folder Include="Common\Behaviors\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Users\Commands\" />
+    <Folder Include="Users\Dtos\" />
+    <Folder Include="Users\Queries\" />
+  </ItemGroup>
+
+</Project>
