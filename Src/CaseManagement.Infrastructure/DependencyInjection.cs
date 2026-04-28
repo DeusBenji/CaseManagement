@@ -2,6 +2,8 @@
 using CaseManagement.Infrastructure.Peristence;
 using CaseManagement.Infrastructure.Peristence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace CaseManagement.Infrastructure
