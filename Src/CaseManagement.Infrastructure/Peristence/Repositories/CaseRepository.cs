@@ -26,10 +26,12 @@ namespace CaseManagement.Infrastructure.Peristence.Repositories
 
         public async Task<Case?> GetByCaseNumberAsync(string caseNumber, CancellationToken cancellationToken = default)
         {
+            var valueObject = new CaseNumber(caseNumber);
+
             return await _dbContext.Cases
                 .Include(c => c.Comments)
                 .Include(c => c.Deadlines)
-                .FirstOrDefaultAsync(c => c.CaseNumber.Value == caseNumber, cancellationToken);
+                .FirstOrDefaultAsync(c => c.CaseNumber.Value == valueObject, cancellationToken);
         }
 
         public async Task<bool> ExistsByCaseNumberAsync(string caseNumber, CancellationToken cancellationToken = default)
@@ -37,7 +39,7 @@ namespace CaseManagement.Infrastructure.Peristence.Repositories
             var valueObject = new CaseNumber(caseNumber);
 
             return await _dbContext.Cases
-                .AnyAsync(c => c.CaseNumber.Value == valueObject, cancellationToken);
+                .AnyAsync(c => c.CaseNumber == valueObject, cancellationToken);
 
         }
 

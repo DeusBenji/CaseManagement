@@ -1,9 +1,10 @@
 ﻿using CaseManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using CaseManagement.Application.Abstraction.Persistence;
 
 namespace CaseManagement.Infrastructure.Peristence
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IUnitOfWork
     {
         public DbSet<Case> Cases => Set<Case>();
         public DbSet<CaseDeadline> CaseDeadlines => Set<CaseDeadline>();

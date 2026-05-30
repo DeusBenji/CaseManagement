@@ -20,7 +20,7 @@ public class Case : BaseEntity
     public DateTime CreatedAtUtc { get; private set; }
     public DateTime UpdatedAtUtc { get; private set; }
     public DateTime? ClosedAtUtc { get; private set; }
-    public byte[] RowVersion { get; private set; } = Array.Empty<byte>();
+    public uint RowVersion { get; private set; }
 
     public IReadOnlyCollection<CaseComment> Comments => _comments.AsReadOnly();
     public IReadOnlyCollection<CaseDeadline> Deadlines => _deadlines.AsReadOnly();

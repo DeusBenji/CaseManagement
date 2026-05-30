@@ -21,6 +21,9 @@ namespace CaseManagement.Infrastructure
 
             services.AddScoped<ICaseRepository, CaseRepository>();
 
+            services.AddScoped<IUnitOfWork>(sp =>
+                sp.GetRequiredService<ApplicationDbContext>());
+
             return services;
 
         }
