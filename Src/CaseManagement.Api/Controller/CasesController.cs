@@ -44,9 +44,9 @@ namespace CaseManagement.Api.Controller
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetCaseById(Guid Id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetCaseById(Guid id, CancellationToken cancellationToken)
         {
-            var query = new GetCaseByIdQuery(Id);
+            var query = new GetCaseByIdQuery(id);
 
             var response = await _getCaseByIdHandler.Handle(query, cancellationToken);
     
