@@ -11,17 +11,13 @@ public sealed class CreateCaseCommandHandler
     private readonly ICaseRepository _caseRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public CreateCaseCommandHandler(
-        ICaseRepository caseRepository,
-        IUnitOfWork unitOfWork)
+    public CreateCaseCommandHandler(ICaseRepository caseRepository, IUnitOfWork unitOfWork)
     {
         _caseRepository = caseRepository;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Guid> Handle(
-        CreateCaseCommand command,
-        CancellationToken cancellationToken = default)
+    public async Task<Guid> Handle(CreateCaseCommand command, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(command.Description))
             throw new RequestValidationException("Beskrivelse må ikke være tom.");
