@@ -15,7 +15,6 @@
     <Folder Include="Cases\Queries\GetCaseById\" />
     <Folder Include="Cases\Queries\GetAllCases\" />
     <Folder Include="Common\Behaviors\" />
-    <Folder Include="Common\Exceptions\" />
     <Folder Include="Users\Commands\" />
     <Folder Include="Users\Dtos\" />
     <Folder Include="Users\Queries\" />

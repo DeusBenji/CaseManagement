@@ -25,6 +25,10 @@ Tjek connection string I Api/appsettings.
 (cd til src)
 
 📦 EF Core – Database Setup
+
+Build/Rebuild solution
+Derefter gå til CaseManagement/src
+
 1. Opret migration
 dotnet ef migrations add InitialCreate --project CaseManagement.Infrastructure --startup-project CaseManagement.Api
 2. Opdater database

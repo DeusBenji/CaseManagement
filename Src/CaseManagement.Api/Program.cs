@@ -1,3 +1,4 @@
+using CaseManagement.Api.Middleware;
 using CaseManagement.Application;
 using CaseManagement.Infrastructure;
 
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//Middleware
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
