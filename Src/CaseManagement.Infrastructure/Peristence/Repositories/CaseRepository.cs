@@ -19,8 +19,9 @@ namespace CaseManagement.Infrastructure.Peristence.Repositories
         public async Task<Case?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbContext.Cases
-                .Include(c => c.Comments)
-                .Include(c => c.Deadlines)
+                //.Include(c => c.Comments)
+                //.Include(c => c.Deadlines)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
         }
 
@@ -29,8 +30,9 @@ namespace CaseManagement.Infrastructure.Peristence.Repositories
             var valueObject = new CaseNumber(caseNumber);
 
             return await _dbContext.Cases
-                .Include(c => c.Comments)
-                .Include(c => c.Deadlines)
+                //.Include(c => c.Comments)
+                //.Include(c => c.Deadlines)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.CaseNumber == valueObject, cancellationToken);
         }
 
@@ -46,6 +48,26 @@ namespace CaseManagement.Infrastructure.Peristence.Repositories
         public async Task AddAsync(Case caseEntity, CancellationToken cancellationToken = default)
         {
             await _dbContext.Cases.AddAsync(caseEntity, cancellationToken);
+        }
+        public async Task<IReadOnlyList<Case>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Cases
+                .AsNoTracking()
+                .OrderByDescending(c => c.CreatedAtUtc)
+                .ToListAsync(cancellationToken);
+        }
+        public async Task<IReadOnlyList<Case>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Cases
+                .AsNoTracking()
+                .OrderByDescending(c => c.CreatedAtUtc)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync(cancellationToken);
+        }
+        public async Task<int> CountAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Cases.CountAsync(cancellationToken);
         }
 
 

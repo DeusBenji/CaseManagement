@@ -1,4 +1,5 @@
 ﻿using CaseManagement.Application.Abstraction.Persistence;
+using CaseManagement.Application.Cases.Queries.GetAllCases;
 using CaseManagement.Infrastructure.Peristence;
 using CaseManagement.Infrastructure.Peristence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ namespace CaseManagement.Infrastructure
                 options.UseNpgsql(connectioString));
 
             services.AddScoped<ICaseRepository, CaseRepository>();
+            services.AddScoped<GetCasesQueryHandler>();
+
 
             services.AddScoped<IUnitOfWork>(sp =>
                 sp.GetRequiredService<ApplicationDbContext>());

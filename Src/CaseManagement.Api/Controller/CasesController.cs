@@ -2,6 +2,7 @@
 using CaseManagement.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 using CaseManagement.Application.Cases.Queries.GetCaseById;
+using CaseManagement.Application.Cases.Queries.GetAllCases;
 
 
 namespace CaseManagement.Api.Controller
@@ -12,11 +13,13 @@ namespace CaseManagement.Api.Controller
     {
         private readonly CreateCaseCommandHandler _createCaseHandler;
         private readonly GetCaseByIdQueryHandler _getCaseByIdHandler;
+        private readonly GetCasesQueryHandler _getCasesQueryHandler;
 
-        public CasesController(CreateCaseCommandHandler createCaseHandler, GetCaseByIdQueryHandler getCaseByIdHandler)
+        public CasesController(CreateCaseCommandHandler createCaseHandler, GetCaseByIdQueryHandler getCaseByIdHandler, GetCasesQueryHandler getCasesQueryHandler)
         {
             _createCaseHandler = createCaseHandler;
             _getCaseByIdHandler = getCaseByIdHandler;
+            _getCasesQueryHandler = getCasesQueryHandler;
         }
 
         [HttpPost]
@@ -35,12 +38,13 @@ namespace CaseManagement.Api.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCases()
+        public async Task<IActionResult> GetCases([FromQuery] int pageNumber = 1,[FromQuery] int pageSize = 20,CancellationToken cancellationToken = default)
         {
-            // Implementer logik for at hente sager her
-            return Ok();
+            var query = new GetCasesQuery(pageNumber, pageSize);
 
+            var response = await _getCasesQueryHandler.Handle(query, cancellationToken);
 
+            return Ok(response);
         }
 
         [HttpGet("{id:guid}")]

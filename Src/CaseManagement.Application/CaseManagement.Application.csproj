@@ -11,8 +11,6 @@
     <Folder Include="Abstraction\Services\" />
     <Folder Include="Cases\Commands\AssignCase\" />
     <Folder Include="Cases\Commands\UpdateCaseStatus\" />
-    <Folder Include="Cases\Dtos\" />
-    <Folder Include="Cases\Queries\GetAllCases\" />
     <Folder Include="Common\Behaviors\" />
     <Folder Include="Users\Commands\" />
     <Folder Include="Users\Dtos\" />
